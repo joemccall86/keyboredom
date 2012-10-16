@@ -4,12 +4,17 @@ repositories {
     mavenCentral()
 }
 
+jar {
+    manifest.attributes("Main-Class":"com.mccall.keyboredom.Keyboredom")
+}
+
 dependencies {
-    compile 'org.codehaus.groovy:groovy-all:2.0.5'
-    compile 'org.springframework.integration:spring-integration-core:2.1.3.RELEASE'
+    groovy 'org.codehaus.groovy:groovy-all:2.0.5'
+    groovy 'org.springframework.integration:spring-integration-core:2.1.3.RELEASE'
 }
 
 task "create-dirs" << {
+    sourceSets*.java.srcDirs*.each { it.mkdirs() }
     sourceSets*.groovy.srcDirs*.each { it.mkdirs() }
     sourceSets*.resources.srcDirs*.each { it.mkdirs() }
 }
