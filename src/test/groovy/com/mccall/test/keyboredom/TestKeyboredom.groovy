@@ -1,13 +1,15 @@
 package com.mccall.test.keyboredom
 
 import org.junit.Test
-import org.springframework.context.support.ClassPathXmlApplicationContext
+import org.junit.runner.RunWith
+import org.springframework.test.context.ContextConfiguration
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations="/integration.xml")
 class TestKeyboredom {
     @Test
     void entryPoint() {
-        println 'Loading Application Context XML...'
-        new ClassPathXmlApplicationContext("integration.xml")
         Thread.sleep(5000)
     }
 }
