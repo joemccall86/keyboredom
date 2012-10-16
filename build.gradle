@@ -1,0 +1,17 @@
+apply plugin: 'groovy'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.0.5'
+}
+
+task "create-dirs" << {
+    sourceSets*.groovy.srcDirs*.each { it.mkdirs() }
+    sourceSets*.resources.srcDirs*.each { it.mkdirs() }
+}
+
+// vim:ft=groovy:
+
