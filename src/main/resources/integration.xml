@@ -29,7 +29,7 @@
         <constructor-arg value="test"/>
     </bean>
 
-    <int:chain input-channel="incomingTweets">
+    <int:chain input-channel="incomingTweets" output-channel="nullChannel">
         <!-- Transform the HTML escape codes -->
         <int:transformer
                 expression="T(org.apache.commons.lang.StringEscapeUtils).unescapeHtml(payload.text)"/>
@@ -48,12 +48,9 @@
         <int:transformer
                 expression="T(com.mongodb.BasicDBObjectBuilder).start().add('text', payload.toString()).get()" />
 
+        <!-- Store it in the database -->
         <int:service-activator
                 expression="@mongoDbFactory.db.getCollection('texts').insert(payload)"/>
-
-        <!-- Print it out -->
-        <int:service-activator
-                expression="T(System).out.println(payload.toString())"/>
     </int:chain>
 
 </beans>
