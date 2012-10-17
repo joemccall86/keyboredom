@@ -23,6 +23,11 @@ superhumans. Either way the assumption is that there is a learning curve of 0
 * Spring Integration
 * MongoDB
 
+## Resources
+ * CSS/HTML for the keyboard was adapted from a [NetTut Tutorial](http://net.tutsplus.com/tutorials/javascript-ajax/creating-a-keyboard-with-css-and-jquery/)
+ * CSS for the background was adapted from [This CSS example](http://bluerobot.com/web/css/center1.html)
+ * All other code was written by the author
+
 ## Motivation
 This will most likely be an enry to the CloudFoundry app contest taking place
 during SpringOne 2GX 2012, but it's also an opportunity for me to experience
