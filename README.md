@@ -32,3 +32,7 @@ superhumans. Either way the assumption is that there is a learning curve of 0
 This will most likely be an enry to the CloudFoundry app contest taking place
 during SpringOne 2GX 2012, but it's also an opportunity for me to experience
 first-hand what some of these technologies are capable of.
+
+## Demo
+The application is deployed at [Keyboredom](http://keyboredom.cloudfoundry.com)
+on CloudFoundry.
