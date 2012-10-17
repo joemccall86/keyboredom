@@ -40,10 +40,10 @@
 
     <bean id="mongoDbFactory" class="org.springframework.data.mongodb.core.SimpleMongoDbFactory">
         <constructor-arg>
-            <bean class="com.mongodb.MongoURI" 
-                    c:uri="mongodb://localhost:27017/test"/>
             <!--<bean class="com.mongodb.MongoURI" -->
-                    <!--c:uri="mongodb://566f1f1e-4202-4276-9688-cca5ccbb3385:8a0fd121-8610-4c1f-afc8-3254354cf8df@172.30.48.61:25160/db"/>-->
+                    <!--c:uri="mongodb://localhost:27017/test"/>-->
+            <bean class="com.mongodb.MongoURI" 
+                    c:uri="mongodb://566f1f1e-4202-4276-9688-cca5ccbb3385:8a0fd121-8610-4c1f-afc8-3254354cf8df@172.30.48.61:25160/db"/>
         </constructor-arg>
     </bean>
 

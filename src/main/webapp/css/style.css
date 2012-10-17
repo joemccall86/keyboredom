@@ -16,7 +16,7 @@ width:700px
 body {
 font: 71%/1.5 Verdana, Sans-Serif;
 background: #ccc;
-margin:0px auto
+margin:0px;padding=0px
 }
 #container {
 margin: 100px auto;
