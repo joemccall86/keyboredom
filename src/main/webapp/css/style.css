@@ -1,17 +1,29 @@
 * {
-margin: 0;
+margin: 10px 10px auto;
 padding: 0;
+width:700px
 }
+
+#Content {
+	width:728;
+	margin:0px auto; /* Right and left margin widths set to "auto" */
+	text-align:left; /* Counteract to IE5/Win Hack */
+	padding:15px;
+	border:1px dashed #333;
+	background-color:#eee;
+	}
+
 body {
 font: 71%/1.5 Verdana, Sans-Serif;
-background: #eee;
+background: #ccc;
+margin:0px auto
 }
 #container {
 margin: 100px auto;
 width: 688px;
 }
 #write {
-margin: 0 0 5px;
+margin: 0 0 5px auto;
 padding: 5px;
 width: 671px;
 height: 200px;
@@ -22,8 +34,8 @@ border: 1px solid #f9f9f9;
 -webkit-border-radius: 5px;
 }
 #keyboard {
-margin: 0;
-padding: 0;
+margin: 0 ;
+padding: 20px;
 list-style: none;
 }
 	#keyboard li {
@@ -76,3 +88,4 @@ list-style: none;
 		border-color: #e5e5e5;
 		cursor: pointer;
 		}
+
