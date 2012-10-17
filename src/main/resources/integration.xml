@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:c="http://www.springframework.org/schema/c"
         xmlns:int="http://www.springframework.org/schema/integration"
         xmlns:int-twitter="http://www.springframework.org/schema/integration/twitter"
         xmlns:int-stream="http://www.springframework.org/schema/integration/stream"
@@ -24,9 +25,9 @@
 
     <bean id="mongoDbFactory" class="org.springframework.data.mongodb.core.SimpleMongoDbFactory">
         <constructor-arg>
-            <bean class="com.mongodb.Mongo"/>
+            <bean class="com.mongodb.MongoURI" 
+                    c:uri="mongodb://566f1f1e-4202-4276-9688-cca5ccbb3385:8a0fd121-8610-4c1f-afc8-3254354cf8df@172.30.48.61:25160/db"/>
         </constructor-arg>
-        <constructor-arg value="test"/>
     </bean>
 
     <int:chain input-channel="incomingTweets" output-channel="nullChannel">
