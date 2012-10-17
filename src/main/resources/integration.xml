@@ -5,6 +5,7 @@
         xmlns:int="http://www.springframework.org/schema/integration"
         xmlns:int-twitter="http://www.springframework.org/schema/integration/twitter"
         xmlns:int-stream="http://www.springframework.org/schema/integration/stream"
+        xmlns:int-feed="http://www.springframework.org/schema/integration/feed"
         xsi:schemaLocation="
         http://www.springframework.org/schema/beans 
         http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -14,6 +15,8 @@
         http://www.springframework.org/schema/integration/twitter/spring-integration-twitter.xsd
         http://www.springframework.org/schema/integration/stream
         http://www.springframework.org/schema/integration/stream/spring-integration-stream.xsd
+        http://www.springframework.org/schema/integration/feed 
+        http://www.springframework.org/schema/integration/feed/spring-integration-feed.xsd
         ">
 
 
@@ -23,35 +26,75 @@
         <int:poller fixed-rate="5000" max-messages-per-poll="3"/>
     </int-twitter:search-inbound-channel-adapter>
 
+    <int-feed:inbound-channel-adapter
+            channel="incomingGitHubCommits"
+            url="https://github.com/SpringSource/spring-framework/commits/master.atom">
+        <int:poller fixed-rate="5000" max-messages-per-poll="3"/>
+    </int-feed:inbound-channel-adapter>
+
+    <int-feed:inbound-channel-adapter
+            channel="incomingBlogEntries"
+            url="http://feeds.feedburner.com/SpringSourceTeamBlog?format=xml">
+        <int:poller fixed-rate="5000" max-messages-per-poll="3"/>
+    </int-feed:inbound-channel-adapter>
+
     <bean id="mongoDbFactory" class="org.springframework.data.mongodb.core.SimpleMongoDbFactory">
         <constructor-arg>
-            <!--<bean class="com.mongodb.MongoURI" -->
-                    <!--c:uri="mongodb://localhost:27017/test"/>-->
             <bean class="com.mongodb.MongoURI" 
-                    c:uri="mongodb://566f1f1e-4202-4276-9688-cca5ccbb3385:8a0fd121-8610-4c1f-afc8-3254354cf8df@172.30.48.61:25160/db"/>
+                    c:uri="mongodb://localhost:27017/test"/>
+            <!--<bean class="com.mongodb.MongoURI" -->
+                    <!--c:uri="mongodb://566f1f1e-4202-4276-9688-cca5ccbb3385:8a0fd121-8610-4c1f-afc8-3254354cf8df@172.30.48.61:25160/db"/>-->
         </constructor-arg>
     </bean>
 
-    <int:chain input-channel="incomingTweets" output-channel="nullChannel">
-        <!-- Transform the HTML escape codes -->
+    <int:chain input-channel="incomingBlogEntries" output-channel="incoming">
+        <int:transformer 
+                expression="payload.description.value"/>
+    </int:chain>
+
+    <int:chain input-channel="incomingGitHubCommits" output-channel="incoming">
+        <int:transformer
+                expression="payload.contents"/>
+        <int:splitter />
+        <!--[> remove HTML/XML tags <]-->
+        <int:transformer
+                expression="payload.value.toString().replaceAll('&lt;.*&gt;','')"/>
+    </int:chain>
+
+    <!-- The twitter payload has only the text property that is interesting -->
+    <int:chain input-channel="incomingTweets" output-channel="incoming">
+        <!--[> Transform the HTML escape codes <]-->
         <int:transformer
                 expression="T(org.apache.commons.lang.StringEscapeUtils).unescapeHtml(payload.text)"/>
+    </int:chain>
 
-        <!-- Upper case the entire thing -->
+    <!-- change to info if you want to see data by default -->
+    <int:logging-channel-adapter id="logger" level="INFO"/>
+
+    <!-- Log the data we're using to the logger -->
+    <int:channel id="incoming">
+        <int:interceptors>
+            <int:wire-tap channel="logger"/>
+        </int:interceptors>
+    </int:channel>
+
+    <!-- This chain assumes the payload is a string-->
+    <int:chain input-channel="incoming" output-channel="nullChannel">
+        <!--[> Upper case the entire thing <]-->
         <int:transformer
                 expression="payload.toUpperCase()"/>
 
-        <!-- Convert to a collection compatible store -->
+        <!--[> Convert to a collection compatible store <]-->
         <int:transformer
                 expression="T(java.util.Arrays).asList(payload.toCharArray())"/>
 
-        <!-- Splitter default behavior splits each element into a new message -->
+        <!--[> Splitter default behavior splits each element into a new message <]-->
         <int:splitter />
 
         <int:transformer
                 expression="T(com.mongodb.BasicDBObjectBuilder).start().add('text', payload.toString()).get()" />
 
-        <!-- Store it in the database -->
+        <!--[> Store it in the database <]-->
         <int:service-activator
                 expression="@mongoDbFactory.db.getCollection('texts').insert(payload)"/>
     </int:chain>

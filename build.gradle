@@ -9,6 +9,7 @@ repositories {
 dependencies {
     groovy 'org.codehaus.groovy:groovy-all:2.0.5'
     groovy 'org.springframework.integration:spring-integration-core:2.1.3.RELEASE'
+    groovy 'org.springframework.integration:spring-integration-feed:2.1.3.RELEASE'
     groovy 'org.springframework.integration:spring-integration-stream:2.1.3.RELEASE'
     groovy 'org.springframework.integration:spring-integration-twitter:2.1.3.RELEASE'
     groovy 'org.springframework:spring-context:3.1.2.RELEASE'
@@ -16,6 +17,7 @@ dependencies {
     groovy 'org.springframework.data:spring-data-mongodb:1.1.0.RELEASE'
     groovy 'commons-lang:commons-lang:2.6'
     groovy 'org.mongodb:mongo-java-driver:2.9.1'
+    groovy 'org.slf4j:slf4j-simple:1.7.2'
     testCompile 'junit:junit:4.10'
 }
 
