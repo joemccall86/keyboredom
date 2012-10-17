@@ -27,60 +27,60 @@ println """
 
 <div id="container">
 	<ul id="keyboard">
-		<li class="symbol"><span class="off">`</span><span class="on">~</span></li>
-		<li class="symbol"><span class="off">1</span><span class="on">!</span></li>
-		<li class="symbol"><span class="off">2</span><span class="on">@</span></li>
-		<li class="symbol"><span class="off">3</span><span class="on">#</span></li>
-		<li class="symbol"><span class="off">4</span><span class="on">\$</span></li>
-		<li class="symbol"><span class="off">5</span><span class="on">%</span></li>
-		<li class="symbol"><span class="off">6</span><span class="on">^</span></li>
-		<li class="symbol"><span class="off">7</span><span class="on">&amp;</span></li>
-		<li class="symbol"><span class="off">8</span><span class="on">*</span></li>
-		<li class="symbol"><span class="off">9</span><span class="on">(</span></li>
-		<li class="symbol"><span class="off">0</span><span class="on">)</span></li>
-		<li class="symbol"><span class="off">-</span><span class="on">_</span></li>
-		<li class="symbol"><span class="off">=</span><span class="on">+</span></li>
+		<li class="symbol"><span class="off">35</span><span class="on">~</span></li>
+		<li class="symbol"><span class="off">36</span><span class="on">!</span></li>
+		<li class="symbol"><span class="off">37</span><span class="on">@</span></li>
+		<li class="symbol"><span class="off">38</span><span class="on">#</span></li>
+		<li class="symbol"><span class="off">39</span><span class="on">\$</span></li>
+		<li class="symbol"><span class="off">40</span><span class="on">%</span></li>
+		<li class="symbol"><span class="off">41</span><span class="on">^</span></li>
+		<li class="symbol"><span class="off">42</span><span class="on">&amp;</span></li>
+		<li class="symbol"><span class="off">43</span><span class="on">*</span></li>
+		<li class="symbol"><span class="off">44</span><span class="on">(</span></li>
+		<li class="symbol"><span class="off">45</span><span class="on">)</span></li>
+		<li class="symbol"><span class="off">46</span><span class="on">_</span></li>
+		<li class="symbol"><span class="off">47</span><span class="on">+</span></li>
 		<li class="delete lastitem">delete</li>
 		<li class="tab">tab</li>
-		<li class="letter">q</li>
-		<li class="letter">w</li>
-		<li class="letter">e</li>
-		<li class="letter">r</li>
-		<li class="letter">t</li>
-		<li class="letter">y</li>
-		<li class="letter">u</li>
-		<li class="letter">i</li>
-		<li class="letter">o</li>
-		<li class="letter">p</li>
-		<li class="symbol"><span class="off">[</span><span class="on">{</span></li>
-		<li class="symbol"><span class="off">]</span><span class="on">}</span></li>
-		<li class="symbol lastitem"><span class="off">\\</span><span class="on">|</span></li>
+		<li class="letter">24</li>
+		<li class="letter">22</li>
+		<li class="letter">20</li>
+		<li class="letter">18</li>
+		<li class="letter">16</li>
+		<li class="letter">11</li>
+		<li class="letter">13</li>
+		<li class="letter">17</li>
+		<li class="letter">19</li>
+		<li class="letter">21</li>
+		<li class="symbol"><span class="off">32</span><span class="on">{</span></li>
+		<li class="symbol"><span class="off">33</span><span class="on">}</span></li>
+		<li class="symbol lastitem"><span class="off">34</span><span class="on">|</span></li>
 		<li class="capslock">caps lock</li>
-		<li class="letter">a</li>
-		<li class="letter">s</li>
-		<li class="letter">d</li>
-		<li class="letter">f</li>
-		<li class="letter">g</li>
-		<li class="letter">h</li>
-		<li class="letter">j</li>
-		<li class="letter">k</li>
-		<li class="letter">l</li>
-		<li class="symbol"><span class="off">;</span><span class="on">:</span></li>
-		<li class="symbol"><span class="off">'</span><span class="on">&quot;</span></li>
+		<li class="letter">8</li>
+		<li class="letter">6</li>
+		<li class="letter">4</li>
+		<li class="letter">2</li>
+		<li class="letter">10</li>
+		<li class="letter">9</li>
+		<li class="letter">1</li>
+		<li class="letter">3</li>
+		<li class="letter">5</li>
+		<li class="symbol"><span class="off">7</span><span class="on">:</span></li>
+		<li class="symbol"><span class="off">31</span><span class="on">&quot;</span></li>
 		<li class="return lastitem">return</li>
 		<li class="left-shift">shift</li>
-		<li class="letter">z</li>
-		<li class="letter">x</li>
-		<li class="letter">c</li>
-		<li class="letter">v</li>
-		<li class="letter">b</li>
-		<li class="letter">n</li>
-		<li class="letter">m</li>
-		<li class="symbol"><span class="off">,</span><span class="on">&lt;</span></li>
-		<li class="symbol"><span class="off">.</span><span class="on">&gt;</span></li>
-		<li class="symbol"><span class="off">/</span><span class="on">?</span></li>
+		<li class="letter">30</li>
+		<li class="letter">28</li>
+		<li class="letter">26</li>
+		<li class="letter">14</li>
+		<li class="letter">12</li>
+		<li class="letter">15</li>
+		<li class="letter">23</li>
+		<li class="symbol"><span class="off">25</span><span class="on">&lt;</span></li>
+		<li class="symbol"><span class="off">27</span><span class="on">&gt;</span></li>
+		<li class="symbol"><span class="off">29</span><span class="on">?</span></li>
 		<li class="right-shift lastitem">shift</li>
-		<li class="space lastitem">&nbsp;</li>
+		<li class="space lastitem">0</li>
 	</ul>
 </div>
 
