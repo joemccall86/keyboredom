@@ -38,14 +38,18 @@
         <int:transformer
                 expression="payload.toUpperCase()"/>
 
-        <!-- Try to split to individual characters -->
+        <!-- Convert to a collection compatible store -->
         <int:transformer
                 expression="T(java.util.Arrays).asList(payload.toCharArray())"/>
 
+        <!-- Splitter default behavior splits each element into a new message -->
         <int:splitter />
 
         <int:transformer
                 expression="T(com.mongodb.BasicDBObjectBuilder).start().add('text', payload.toString()).get()" />
+
+        <int:service-activator
+                expression="@mongoDbFactory.db.getCollection('texts').insert(payload)"/>
 
         <!-- Print it out -->
         <int:service-activator

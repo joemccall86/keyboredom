@@ -28,5 +28,9 @@ task "create-dirs" << {
     sourceSets*.resources.srcDirs*.each { it.mkdirs() }
 }
 
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.2'
+}
+
 // vim:ft=groovy:
 
