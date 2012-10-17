@@ -22,6 +22,13 @@
         <int:poller fixed-rate="5000" max-messages-per-poll="3"/>
     </int-twitter:search-inbound-channel-adapter>
 
+    <bean id="mongoDbFactory" class="org.springframework.data.mongodb.core.SimpleMongoDbFactory">
+        <constructor-arg>
+            <bean class="com.mongodb.Mongo"/>
+        </constructor-arg>
+        <constructor-arg value="test"/>
+    </bean>
+
     <int:chain input-channel="incomingTweets">
         <!-- Transform the HTML escape codes -->
         <int:transformer
@@ -31,7 +38,10 @@
         <int:transformer
                 expression="payload.toUpperCase()"/>
 
-        <!-- For now, just print it out -->
+        <int:transformer
+                expression="T(com.mongodb.BasicDBObjectBuilder).start().add('text', payload).get()" />
+
+        <!-- Print it out -->
         <int:service-activator
                 expression="T(System).out.println(payload)"/>
     </int:chain>
