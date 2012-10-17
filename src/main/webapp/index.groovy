@@ -144,6 +144,11 @@ html.html {
 
                 p "The source code can be found here:"
                 a(href: "https://github.com/joemccall86/keyboredom", "Keyboredom on GitHub")
+
+                form(action: "reset.groovy", method: "post") {
+                    input(type: "submit", value: "Reset the database")
+                    input(type: "hidden", name: "really", value: "yesreally")
+                }
             }
         }
     }
