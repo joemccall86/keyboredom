@@ -38,12 +38,18 @@
         <int:transformer
                 expression="payload.toUpperCase()"/>
 
+        <!-- Try to split to individual characters -->
         <int:transformer
-                expression="T(com.mongodb.BasicDBObjectBuilder).start().add('text', payload).get()" />
+                expression="T(java.util.Arrays).asList(payload.toCharArray())"/>
+
+        <int:splitter />
+
+        <int:transformer
+                expression="T(com.mongodb.BasicDBObjectBuilder).start().add('text', payload.toString()).get()" />
 
         <!-- Print it out -->
         <int:service-activator
-                expression="T(System).out.println(payload)"/>
+                expression="T(System).out.println(payload.toString())"/>
     </int:chain>
 
 </beans>
