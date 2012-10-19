@@ -31,5 +31,5 @@ task wrapper(type: Wrapper) {
     gradleVersion = '1.2'
 }
 
-// vim:ft=groovy:
+// vim:ft=groovy:tw=0:
 

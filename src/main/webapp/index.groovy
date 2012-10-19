@@ -26,6 +26,12 @@ texts = mongoDbFactory.db.getCollection('texts')
 charlist = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','1','2','3','4','5','6','7','8','9','0','`',',','.','/',';','\'','-','=','[',']','\\']
 countmap = [:]
 
+// Kind of a hack to avoid timeouts
+if (texts.count > 30000) {
+    texts.drop()
+    texts = mongoDbFactory.db.getCollection('texts')
+}
+
 // We assign a negative value to this to simplify sorting. We want the
 // higher-values to show up first. The ideal scenario is to do a custom sort to
 // reverse the list.
